@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<style>
+  #loadMore {
+  display: block;
+}
+</style>
+<body>
+<div id="nameList"></div>
+
+<button id="loadMore">Load More</button>
+<script>
+  const names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Ivan', 'John', 'Karen', 'Larry', 'Mia', 'Nina', 'Oliver', 'Pam', 'Quincy', 'Ralph', 'Sara', 'Tom'];
+
+const nameListElement = document.getElementById('nameList');
+const loadMoreButton = document.getElementById('loadMore');
+
+let currentIndex = 0;
+const namesToShow = 3;
+
+function displayNames() {
+  for (let i = 0; i < namesToShow; i++) {
+    const nameIndex = currentIndex + i;
+    if (nameIndex >= names.length) {
+      loadMoreButton.style.display = 'none';
+      break;
+    }
+    const name = names[nameIndex];
+    console.log(name)
+    const nameElement = document.createElement('div');
+    nameElement.textContent = name;
+    nameListElement.appendChild(nameElement);
+  }
+  currentIndex += namesToShow;
+}
+
+displayNames();
+
+loadMoreButton.addEventListener('click', displayNames);
+</script>
+</body>
+
+</html>
